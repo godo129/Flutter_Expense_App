@@ -20,7 +20,8 @@ class MyHomePage extends StatelessWidget {
         title: Text('Flutter App'),
       ),
       body: Column(
-        // mainAxisAlignment: MainAxisAlignment.spaceAround, // 위치 잡기
+        mainAxisAlignment: MainAxisAlignment.spaceAround, // 위치 잡기
+        crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Container(
               width: double.infinity,
