@@ -4,7 +4,6 @@ import 'package:flutter_complete_guide/widgets/user_transaction.dart';
 
 import './widgets/user_transaction.dart';
 
-
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -18,8 +17,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
-  
-  // String titleInput; 
+  // String titleInput;
   // String amountInput;
   final titleController = TextEditingController();
   final amountController = TextEditingController();
@@ -29,6 +27,7 @@ class MyHomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Flutter App'),
+        actions: <Widget>[IconButton(onPressed: () {}, icon: Icon(Icons.add))],
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -43,8 +42,12 @@ class MyHomePage extends StatelessWidget {
                   elevation: 5,
                 ),
               ),
-            UserTransactions(),
+              UserTransactions(),
             ]),
+      ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add)
       ),
     );
   }
