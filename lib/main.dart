@@ -39,7 +39,7 @@ class MyHomePage extends StatelessWidget {
         title: Text('Flutter App'),
       ),
       body: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround, // 위치 잡기
+          mainAxisAlignment: MainAxisAlignment.start, // 위치 잡기
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: <Widget>[
             Container(
@@ -50,16 +50,35 @@ class MyHomePage extends StatelessWidget {
                 elevation: 5,
               ),
             ),
+            Card(
+              elevation: 5,
+              child: Container(
+                padding: EdgeInsets.all(10),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: <Widget>[
+                    TextField(
+                      decoration: InputDecoration(labelText: 'Title'),
+                    ),
+                    TextField(
+                      decoration: InputDecoration(labelText: 'Amount'),
+                    ),
+                    FlatButton(
+                      onPressed: () {}, 
+                      child: Text('Add Transaction'),
+                      textColor: Colors.purple,
+                    )
+                  ],
+                ),
+              ),
+            ),
             Column(
                 children: transactions.map((tx) {
               return Card(
                   child: Row(
                 children: <Widget>[
                   Container(
-                    margin: EdgeInsets.symmetric(
-                      vertical: 10, 
-                      horizontal: 15
-                    ),
+                    margin: EdgeInsets.symmetric(vertical: 10, horizontal: 15),
                     decoration: BoxDecoration(
                       border: Border.all(
                         color: Colors.purple,
@@ -68,25 +87,20 @@ class MyHomePage extends StatelessWidget {
                     ),
                     padding: EdgeInsets.all(10),
                     child: Text(
-                        '\$' + tx.amount.toString(),
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20,
-                          color: Colors.purple,
-                        ),
-                      
+                      '\$' + tx.amount.toString(),
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 20,
+                        color: Colors.purple,
                       ),
+                    ),
                   ),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text(
-                        tx.title, 
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold
-                        )
-                      ),
+                      Text(tx.title,
+                          style: TextStyle(
+                              fontSize: 18, fontWeight: FontWeight.bold)),
                       Text(
                         DateFormat('yyyy/MM/dd').format(tx.date),
                         style: TextStyle(color: Colors.grey),
