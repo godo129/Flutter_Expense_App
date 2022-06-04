@@ -13,9 +13,23 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Personal Expenses',
       theme: ThemeData(
-        primarySwatch: Colors.purple,  
-        accentColor: Colors.amber,
-      ), // 테마 주기
+          primarySwatch: Colors.purple,
+          accentColor: Colors.amber,
+          fontFamily: 'QuickSand',
+          textTheme: ThemeData.light().textTheme.copyWith(
+                  titleMedium: TextStyle(
+                fontFamily: 'OpenSans',
+                fontWeight: FontWeight.bold,
+                fontSize: 18,
+              )), // 카드에 따로 스타일 
+          appBarTheme: AppBarTheme(
+            textTheme: ThemeData.light().textTheme.copyWith(
+                    titleMedium: TextStyle(
+                  fontFamily: 'OpenSans',
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                )),
+          )), // 테마 주기
       home: MyHomePage(),
     );
   }
@@ -51,31 +65,35 @@ class _MyHomePageState extends State<MyHomePage> {
         amount: txAmount,
         date: DateTime.now());
 
-        setState(() {
-          _userTransactions.add(newTx);
-        });
+    setState(() {
+      _userTransactions.add(newTx);
+    });
   }
 
   void _startAddNewTransaction(BuildContext ctx) {
-    showModalBottomSheet(context: ctx, builder: (_) {
-      return  GestureDetector(
-        onTap: () {},
-        child: NewTransaction(_addNewTransaction),
-        behavior: HitTestBehavior.opaque,
-        );
-    });
+    showModalBottomSheet(
+        context: ctx,
+        builder: (_) {
+          return GestureDetector(
+            onTap: () {},
+            child: NewTransaction(_addNewTransaction),
+            behavior: HitTestBehavior.opaque,
+          );
+        });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Personal Expenses'),
+        title: Text(
+          'Personal Expenses',
+          style: TextStyle(fontFamily: 'Open Sans'),
+        ),
         actions: <Widget>[
           IconButton(
-            onPressed: () => _startAddNewTransaction(context), 
-            icon: Icon(Icons.add)
-          )
+              onPressed: () => _startAddNewTransaction(context),
+              icon: Icon(Icons.add))
         ],
       ),
       body: SingleChildScrollView(
