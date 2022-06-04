@@ -22,7 +22,9 @@ class MyApp extends StatelessWidget {
                 fontFamily: 'OpenSans',
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
-              )), // 카드에 따로 스타일
+              ),
+              // button: TextStyle(color: Colors.white),
+              ), // 카드에 따로 스타일
           appBarTheme: AppBarTheme(
             textTheme: ThemeData.light().textTheme.copyWith(
                     titleMedium: TextStyle(
