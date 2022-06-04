@@ -19,12 +19,12 @@ class MyApp extends StatelessWidget {
           errorColor: Colors.red,
           fontFamily: 'QuickSand',
           textTheme: ThemeData.light().textTheme.copyWith(
-                  titleMedium: TextStyle(
-                fontFamily: 'OpenSans',
-                fontWeight: FontWeight.bold,
-                fontSize: 18,
-              ),
-              // button: TextStyle(color: Colors.white),
+                titleMedium: TextStyle(
+                  fontFamily: 'OpenSans',
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18,
+                ),
+                // button: TextStyle(color: Colors.white),
               ), // 카드에 따로 스타일
           appBarTheme: AppBarTheme(
             textTheme: ThemeData.light().textTheme.copyWith(
@@ -64,15 +64,14 @@ class _MyHomePageState extends State<MyHomePage> {
 
   List<Transaction> get _recentTransactions {
     return _userTransactions.where((tx) {
-      return tx.date.isAfter(
-          DateTime.now().subtract(
-            Duration(days: 7),
-          )
-        );
+      return tx.date.isAfter(DateTime.now().subtract(
+        Duration(days: 7),
+      ));
     }).toList();
   }
 
-  void _addNewTransaction(String txTitle, double txAmount, DateTime chosenDate) {
+  void _addNewTransaction(
+      String txTitle, double txAmount, DateTime chosenDate) {
     final newTx = Transaction(
         id: DateTime.now().toString(),
         title: txTitle,
@@ -122,14 +121,6 @@ class _MyHomePageState extends State<MyHomePage> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: <Widget>[
               Chart(_recentTransactions),
-              Container(
-                width: double.infinity,
-                child: Card(
-                  child: Text('CHART!'),
-                  color: Colors.blue,
-                  elevation: 5,
-                ),
-              ),
               TransactionList(_userTransactions, _deleteTransaction),
             ]),
       ),
