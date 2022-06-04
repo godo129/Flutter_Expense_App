@@ -22,11 +22,11 @@ class Chart extends StatelessWidget {
          }
       }
 
-      print(DateFormat.E(weekDay));
+      print(DateFormat.E().format(weekDay));
       print(totalSum);
 
       return {
-        'day': DateFormat.E(weekDay), 
+        'day': DateFormat.E().format(weekDay), 
         'amount': totalSum,
       };
     });
@@ -34,6 +34,7 @@ class Chart extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print(groupTranscationValues);
     return Card(
       elevation: 6,
       margin: EdgeInsets.all(20),
