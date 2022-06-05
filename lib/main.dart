@@ -163,7 +163,7 @@ class _MyHomePageState extends State<MyHomePage> {
               if (isLandscape) Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text('Show Chart'),
+                  Text('Show Chart', style: Theme.of(context).textTheme.titleMedium,),
                   Switch.adaptive(
                     activeColor: Theme.of(context).accentColor,
                     value: _showChart,
